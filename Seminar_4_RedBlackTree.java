@@ -59,7 +59,7 @@ public class Seminar_4_RedBlackTree {
      */
     public boolean addNode(Node node, int value) {
         if (node.value == value) {                                  // Если нода с таким значением уже существует,
-            System.out.printf("Нода со значением %s существует, введите другое число.", value);
+            System.out.printf("\nНода со значением %s существует. Введите другое число.\n", value);
             return false;                                           // то возвращаем сообщение об ошибке.
         } else {
             if (node.value > value) {
@@ -105,7 +105,7 @@ public class Seminar_4_RedBlackTree {
             // Если правый ребенок красного цвета, а левого ребенка нет или он черного цвета,
             // то подтверждаем потребность в балансировке и выполняем "правый разворот".
             if (result.rightChild != null && result.rightChild.colour == Colour.RED &&
-                    result.leftChild == null || result.leftChild.colour == Colour.BLACK) {
+                    (result.leftChild == null || result.leftChild.colour == Colour.BLACK)) {
                 needRebalance = true;
                 result = rightSwap(result);
             }
@@ -140,7 +140,7 @@ public class Seminar_4_RedBlackTree {
         node.rightChild = betweenChild;
         rightChild.colour = node.colour;
         node.colour = Colour.RED;
-        System.out.print("\nДля балансировки выполнен правый разворот.");
+        System.out.print("\nДля балансировки выполнен правый разворот.\n");
         return rightChild;
     }
 
@@ -154,7 +154,7 @@ public class Seminar_4_RedBlackTree {
         node.leftChild = betweenChild;
         leftChild.colour = node.colour;
         node.colour = Colour.RED;
-        System.out.print("\nДля балансировки выполнен левый разворот.");
+        System.out.print("\nДля балансировки выполнен левый разворот.\n");
         return leftChild;
     }
 
@@ -165,7 +165,7 @@ public class Seminar_4_RedBlackTree {
         node.rightChild.colour = Colour.BLACK;
         node.leftChild.colour = Colour.BLACK;
         node.colour = Colour.RED;
-        System.out.print("\nДля балансировки проведена смена цвета.");
+        System.out.print("\nДля балансировки проведена смена цвета.\n");
     }
 
     /**
@@ -180,8 +180,9 @@ public class Seminar_4_RedBlackTree {
             if (node.colour == Colour.BLACK) {
                 col = '◯';
             }
-            System.out.print(node.value + " " + col + " ");
+
             inorder(node.rightChild);
+            System.out.print(node.value + "-" + col + " ");
         }
     }
 }
